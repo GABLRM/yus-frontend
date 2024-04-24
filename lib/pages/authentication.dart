@@ -24,18 +24,14 @@ class AuthenticationPage extends StatelessWidget {
             CustomButton(
               text: 'Connexion',
               press: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Login()),
-                );
+                Navigator.pushNamed(context, '/login');
               },
             ),
             const SizedBox(height: 50),
             CustomButton(
               text: "Inscription",
               press: () => {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Login()),
-                ),
+                Navigator.pushNamed(context, '/login')
               },
             ),
           ],

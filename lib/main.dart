@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yus_dev/pages/authentication.dart';
+import 'package:yus_dev/pages/home.dart';
 import 'package:yus_dev/pages/login.dart';
 
 void main() {
@@ -13,8 +14,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         routes: {
-          '/': (context) => const AuthenticationPage(),
-          '/login': (context) => const LoginPage()
+          '/login': (context) => const LoginPage(),
+          '/home': (context) => const HomePage()
         },
         title: "Yu's",
         theme: ThemeData(scaffoldBackgroundColor: Colors.yellow[50]),
