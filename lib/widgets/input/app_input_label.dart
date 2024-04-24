@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class LabelInput extends StatelessWidget {
   final String label;
+  final TextEditingController controller;
 
   const LabelInput({
     super.key,
     required this.label,
+    required this.controller,
   });
 
   @override
@@ -18,7 +20,8 @@ class LabelInput extends StatelessWidget {
           label,
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        TextField(
+        TextFormField(
+          controller: controller,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 20),
             border: const OutlineInputBorder(

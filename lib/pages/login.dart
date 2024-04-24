@@ -1,58 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:yus_dev/widgets/input/app_input_label.dart';
+import 'package:yus_dev/widgets/loginForm/login_form_widget.dart';
 import 'package:yus_dev/widgets/title/app_title.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: Center(
-            child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 100.0),
-          child: Column(
-            children: [
-              MainTitle(),
-              Text(
-                'Connexion',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-              ),
-              Text(
-                'Connectez-vous pour continuer',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: EdgeInsets.all(50),
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              LabelInput(label: 'Adresse mail'),
-              SizedBox(
-                height: 50,
+              Padding(
+                padding: EdgeInsets.only(top: 100.0),
+                child: Column(
+                  children: [
+                    MainTitle(),
+                    Text(
+                      'Connexion',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Connectez-vous pour continuer',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              LabelInput(label: 'Mot de passe'),
+              SizedBox(
+                height: 20,
+              ),
+              LoginForm(),
             ],
           ),
         ),
-      ],
-    )));
+      ),
+    );
   }
+
+  /* Future<http.Response> loginUser() async {
+    final response = await http.post(
+      Uri.parse('${dotenv.env}/users/auth/login'),
+      body: jsonEncode(
+        {
+          'email': emailController.text,
+          'password': passwordController.text,
+        },
+      ),
+    );
+    return response;
+  } */
 }
