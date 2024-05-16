@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const LoginForm(), // Ce widget doit contenir le bouton "Connexion"
+              const LoginForm(),
             ],
           ),
         ),

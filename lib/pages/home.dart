@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profil.dart'; // Assurez-vous d'importer votre page profil
+import 'profil.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.add, color: Colors.black),
           onPressed: () {
-            // mettre la page associé pour créer une nouv publi
+            // mettre page pour nouv publi
           },
         ),
         title: Row(
@@ -32,8 +32,7 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        ProfilPage()), // Naviguer vers la page Profil
+                    builder: (context) => ProfilPage()), // passage page profi
               );
             },
             child: Container(
@@ -44,10 +43,10 @@ class HomePage extends StatelessWidget {
               ),
               child: ClipOval(
                 child: Image.asset(
-                  'assets/img/pdpexemple.jpg', // Mis à jour pour utiliser AssetImage
-                  width: 40, // Largeur ajustée à une taille plus visible
-                  height: 40, // Hauteur ajustée à une taille plus visible
-                  fit: BoxFit.cover, // Pour remplir correctement le cercle
+                  'assets/img/pdpexemple.jpg',
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover, // Pour remplir cercle
                 ),
               ),
             ),
@@ -61,7 +60,7 @@ class HomePage extends StatelessWidget {
               'assets/img/photopubli1.jpg', 'Cléclé33', 'assets/img/pdp1.png'),
           postCard(
               'assets/img/photopubli2.jpg', 'HugoBdx', 'assets/img/pdp2.jpg'),
-          // ça représente les publications
+          // ça représente les publications etc
         ],
       ),
     );
@@ -69,12 +68,13 @@ class HomePage extends StatelessWidget {
 
   Widget postCard(String imageUrl, String userName, String profileImageUrl) {
     return Card(
+      margin: const EdgeInsets.all(8.0),
       clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
           Container(
-            width: 400,
-            height: 300, // Définissez la hauteur désirée
+            width: double.infinity,
+            height: 300,
             child: Image.asset(
               imageUrl,
               fit: BoxFit.cover,
@@ -83,7 +83,7 @@ class HomePage extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage(
-                  profileImageUrl), // Utiliser une image différente pour la photo de profil
+                  profileImageUrl), // Utiliser une image diff pour la photo de profil
             ),
             title: Text(
               userName,

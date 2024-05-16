@@ -20,7 +20,6 @@ class ProfilPage extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: Colors.grey, // remplacer couleur par pdp
               ),
-              // mettre ici image profil
             ),
             SizedBox(height: 20),
             Text(
@@ -28,13 +27,11 @@ class ProfilPage extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            // Nom et Prénom user
             Text(
               'Nom Prénom',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
-
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/createpubli');
@@ -46,7 +43,7 @@ class ProfilPage extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 5, // nb publi affiché (à modif)
                 itemBuilder: (context, index) {
-                  // Remplacez ce contenu par vos publications réelles
+                  // mettre vrai publi apres pour linstant test
                   return ListTile(
                     title: Text('Publication ${index + 1}'),
                   );

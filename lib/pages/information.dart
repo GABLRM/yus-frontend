@@ -71,7 +71,7 @@ class InformationPage extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Naviguer vers la page de connexion
+                  // nav vers la page de connexion
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LoginPage()),
