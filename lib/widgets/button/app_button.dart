@@ -5,10 +5,10 @@ class CustomButton extends StatelessWidget {
   final void Function() press;
 
   const CustomButton({
-    super.key,
+    Key? key,
     required this.text,
     required this.press,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,8 @@ class CustomButton extends StatelessWidget {
       onPressed: press,
       child: Text(
         text,
-        style: const TextStyle(
+        style: TextStyle(
+          fontFamily: 'Merienda',
           color: Colors.black,
           fontSize: 20,
           fontWeight: FontWeight.w800,

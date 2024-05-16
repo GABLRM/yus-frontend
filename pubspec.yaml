@@ -26,3 +26,9 @@ flutter:
     - family: MeriendaOne
       fonts:
         - asset: assets/MeriendaOne-Regular.ttf
+  assets:
+    - ./assets/img/pdpexemple.jpg
+    - ./assets/img/photopubli1.jpg
+    - ./assets/img/photopubli2.jpg
+    - ./assets/img/pdp1.png
+    - ./assets/img/pdp2.jpg
