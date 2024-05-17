@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:yus_dev/widgets/form/login_form_widget.dart';
+import 'package:yus_dev/widgets/form/register_form_widget.dart';
 import 'package:yus_dev/widgets/title/app_title.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +14,23 @@ class LoginPage extends StatelessWidget {
           children: [
             BackButton(),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 100.0),
+                  padding: EdgeInsets.only(top: 50.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       MainTitle(),
                       Text(
-                        'Connexion',
+                        'Création de votre compte ',
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        'Connectez-vous pour continuer',
+                        'Enregistrez-vous pour continuer',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.grey,
@@ -39,10 +39,7 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                LoginForm(),
+                RegisterForm(),
               ],
             ),
           ],

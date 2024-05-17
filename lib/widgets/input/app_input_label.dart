@@ -21,6 +21,8 @@ class LabelInput extends StatelessWidget {
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         TextFormField(
+          validator: (value) => value!.isEmpty ? 'Ce champ est requis' : null,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 20),

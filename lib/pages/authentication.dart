@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yus_dev/pages/login.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/title/app_title.dart';
 
@@ -15,25 +14,24 @@ class AuthenticationPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: 5.0),
-              child: MainTitle()
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            CustomButton(
-              text: 'Connexion',
-              press: () {
-                Navigator.pushNamed(context, '/login');
-              },
-            ),
-            const SizedBox(height: 50),
-            CustomButton(
-              text: "Inscription",
-              press: () => {
-                Navigator.pushNamed(context, '/login')
-              },
-            ),
+                padding: EdgeInsets.only(top: 5.0), child: MainTitle()),
+              Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                children: [
+                  const SizedBox(height: 100),
+                  CustomButton(
+                    text: 'Connexion',
+                    press: () => {Navigator.pushNamed(context, '/login')},
+                  ),
+                  const SizedBox(height: 50),
+                  CustomButton(
+                    text: 'Inscription',
+                    press: () => {Navigator.pushNamed(context, '/register')},
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
