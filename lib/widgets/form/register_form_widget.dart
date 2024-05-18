@@ -93,7 +93,7 @@ class _LoginFormState extends State<RegisterForm> {
     );
   }
 
-  void registerUser(BuildContext context) {
+  Future<void> registerUser(BuildContext context) async {
     String errorMessage = verificationRegisteringAccount(
         usernameController.text,
         firstnameController.text,
@@ -121,6 +121,21 @@ class _LoginFormState extends State<RegisterForm> {
         emailController.text,
         passwordController.text,
       );
+      if (await storage.read(key: 'token') != null) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, '/home');
+      } else {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: CustomSnackBarContent(
+                errorText: 'Erreur lors de la création du compte'),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+        );
+      }
     }
   }
 }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:yus_dev/utils/authentication_verification.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/input/app_input_label.dart';
 import 'package:yus_dev/repositories/user_repository.dart';
 import 'package:yus_dev/widgets/input/app_input_password.dart';
 import 'package:yus_dev/widgets/snackBar/app_custom_snackbar.dart';
+
+const storage = FlutterSecureStorage();
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -69,7 +72,7 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void loginUser(BuildContext context) {
+  Future<void> loginUser(BuildContext context) async {
     String errorMessage =
         verificationLoginAccount(emailController.text, passwordController.text);
 
@@ -84,6 +87,21 @@ class _LoginFormState extends State<LoginForm> {
       );
     } else {
       login(emailController.text, passwordController.text);
+      if (await storage.read(key: 'token') != null) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, '/home');
+      } else {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: CustomSnackBarContent(
+                errorText: 'Erreur lors de la connexion'),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+        );
+      }
     }
   }
 }

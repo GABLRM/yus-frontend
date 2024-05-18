@@ -48,7 +48,6 @@ Future<http.Response> login(String email, String password) async {
       'password': password,
     }),
   );
-  print(response.body);
   if (response.statusCode == 200) {
     final body = jsonDecode(response.body);
     await storage.write(key: 'token', value: body['access_token']);
