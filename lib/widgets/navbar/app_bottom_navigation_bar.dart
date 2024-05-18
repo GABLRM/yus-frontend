@@ -1,38 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:yus_dev/pages/home.dart';
 
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({super.key});
+class CustomBottomNavigationBar extends StatefulWidget {
+  const CustomBottomNavigationBar({super.key});
 
   @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
+  State<CustomBottomNavigationBar> createState() => _CustomBottomNavigationBarState();
 }
 
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
-  int _SelectedIndex = 0;
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+  int _selectedIndex = 0;
 
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Text(
-      'Index 1: Search',
-      style: optionStyle,
+      'Profile',
     ),
     Text(
-      'Index 2: Profile',
-      style: optionStyle,
+      'Paramètres',
     ),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
-      _SelectedIndex = index;
+      _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Paramètres'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedIconTheme: const IconThemeData(size: 30, applyTextScaling: true),
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey[500],
+        backgroundColor: Colors.yellow[200],
+        onTap: _onItemTapped,
+      ),
+    );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yus_dev/pages/authentication.dart';
-import 'package:yus_dev/pages/home.dart';
 import 'package:yus_dev/pages/login.dart';
 import 'package:yus_dev/pages/register.dart';
+import 'package:yus_dev/widgets/navbar/app_bottom_navigation_bar.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
         routes: {
           '/login': (context) => const LoginPage(),
-          '/home': (context) => const HomePage(),
+          '/home': (context) => const CustomBottomNavigationBar(),
           '/register': (context) => const RegisterPage()
         },
         title: "Yu's",
