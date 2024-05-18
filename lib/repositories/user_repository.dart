@@ -34,7 +34,7 @@ Future<http.Response> register(String username, String firstname,
     await storage.write(key: 'token', value: body['access_token']);
     return response;
   }
-  return register;
+  throw Exception('Erreur lors de la creation du compte');
 }
 
 Future<http.Response> login(String email, String password) async {
@@ -52,5 +52,5 @@ Future<http.Response> login(String email, String password) async {
     final body = jsonDecode(response.body);
     await storage.write(key: 'token', value: body['access_token']);
   }
-  return response;
+  throw Exception('Erreur lors de la connexion');
 }
