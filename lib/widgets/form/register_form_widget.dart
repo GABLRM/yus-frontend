@@ -71,7 +71,8 @@ class _LoginFormState extends State<RegisterForm> {
             const SizedBox(
               height: 20,
             ),
-            PasswordInput(label: 'Mot de passe', controller: passwordController),
+            PasswordInput(
+                label: 'Mot de passe', controller: passwordController),
             const SizedBox(
               height: 20,
             ),
