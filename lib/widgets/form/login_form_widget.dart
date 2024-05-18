@@ -3,6 +3,7 @@ import 'package:yus_dev/utils/authentication_verification.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/input/app_input_label.dart';
 import 'package:yus_dev/repositories/user_repository.dart';
+import 'package:yus_dev/widgets/input/app_input_password.dart';
 import 'package:yus_dev/widgets/snackBar/app_custom_snackbar.dart';
 
 class LoginForm extends StatefulWidget {
@@ -49,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
             const SizedBox(
               height: 50,
             ),
-            LabelInput(
+            PasswordInput(
               label: 'Mot de passe',
               controller: passwordController,
             ),

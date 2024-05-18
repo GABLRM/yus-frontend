@@ -23,6 +23,8 @@ String verificationRegisteringAccount(String username, String firstname,
   if (!verificationPassword(password, confirm)) {
     return 'Les mots de passe ne correspondent pas';
   }
+  if (password.length < 8) {
+    return 'Le mot de passe doit contenir au moins 8 caractères';}
   return '';
 }
 

@@ -3,6 +3,7 @@ import 'package:yus_dev/utils/authentication_verification.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/input/app_input_label.dart';
 import 'package:yus_dev/repositories/user_repository.dart';
+import 'package:yus_dev/widgets/input/app_input_password.dart';
 import 'package:yus_dev/widgets/snackBar/app_custom_snackbar.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -70,11 +71,11 @@ class _LoginFormState extends State<RegisterForm> {
             const SizedBox(
               height: 20,
             ),
-            LabelInput(label: 'Mot de passe', controller: passwordController),
+            PasswordInput(label: 'Mot de passe', controller: passwordController),
             const SizedBox(
               height: 20,
             ),
-            LabelInput(
+            PasswordInput(
                 label: 'Confirmez votre mot de passe',
                 controller: confirmController),
             const SizedBox(
@@ -119,6 +120,7 @@ class _LoginFormState extends State<RegisterForm> {
         lastnameController.text,
         emailController.text,
         passwordController.text,
-      );}
+      );
+    }
   }
 }
