@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:yus_dev/utils/authentication_verification.dart';
@@ -86,16 +88,15 @@ class _LoginFormState extends State<LoginForm> {
         ),
       );
     } else {
-      login(emailController.text, passwordController.text);
-      if (await storage.read(key: 'token') != null) {
+      final token = await login(emailController.text, passwordController.text);
+      if (token.startsWith(RegExp('ey') )) {
         // ignore: use_build_context_synchronously
         Navigator.pushNamed(context, '/home');
       } else {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: CustomSnackBarContent(
-                errorText: 'Erreur lors de la connexion'),
+            content: CustomSnackBarContent(errorText: 'Email ou mot de passe incorrect'),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.transparent,
             elevation: 0,
