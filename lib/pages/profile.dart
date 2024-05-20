@@ -4,6 +4,7 @@ import 'package:yus_dev/classes/post.dart';
 import 'package:yus_dev/classes/user.dart';
 import 'package:yus_dev/repositories/post_repository.dart';
 import 'package:yus_dev/repositories/user_repository.dart';
+import 'package:yus_dev/utils/format_date.dart';
 import 'package:yus_dev/widgets/post/app_post.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -106,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       title: post.title,
                                       content: post.content,
                                       username: post.userId,
-                                      createdAt: post.createdAt,
+                                      createdAt: formatDate(post.createdAt),
                                     ),
                                     const SizedBox(height: 20),
                                 ],

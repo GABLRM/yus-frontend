@@ -14,7 +14,6 @@ Future<List<Post>> fetchPosts() async {
     'Content-Type': 'application/json; charset=UTF-8',
     'Authorization': 'Bearer $token'
   });
-  print(response.body);
   if (response.statusCode == 200) {
     final decodedData = jsonDecode(response.body) as List<dynamic>;
     return decodedData.map((post) => Post.fromJson(post)).toList();
