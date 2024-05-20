@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yus_dev/pages/add.dart';
 import 'package:yus_dev/pages/authentication.dart';
 import 'package:yus_dev/pages/login.dart';
 import 'package:yus_dev/pages/register.dart';
@@ -18,7 +19,8 @@ class MainApp extends StatelessWidget {
         routes: {
           '/login': (context) => const LoginPage(),
           '/home': (context) => const CustomBottomNavigationBar(),
-          '/register': (context) => const RegisterPage()
+          '/register': (context) => const RegisterPage(),
+          '/add' : (context) => const AddPage(),
         },
         title: "Yu's",
         theme: ThemeData(scaffoldBackgroundColor: Colors.yellow[50]),

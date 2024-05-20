@@ -32,37 +32,45 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Colors.yellow[200],
         actions: <Widget>[
-          IconButton(onPressed: () {}, icon: const Icon(Icons.add), iconSize: 30, ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/add');
+            },
+            icon: const Icon(Icons.add),
+            iconSize: 30,
+          ),
         ],
       ),
       body: SafeArea(
         child: Center(
-            child: SingleChildScrollView(
-              
-          child: Column(children: [
-            FutureBuilder<List<Post>>(
-              future: futurePost,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final posts = snapshot.data!; // Access the list of posts
-                  return SingleChildScrollView(
-                      child: Column(children: [
-                    for (final post in posts)
-                      PostContainer(
-                        title: post.title,
-                        content: post.content,
-                        username: post.userId,
-                      ),
-                      const SizedBox(height: 20),
-                  ]));
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-                return const CircularProgressIndicator();
-              },
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                FutureBuilder<List<Post>>(
+                  future: futurePost,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final posts = snapshot.data!; // Access the list of posts
+                      return SingleChildScrollView(
+                          child: Column(children: [
+                        for (final post in posts)
+                          PostContainer(
+                            title: post.title,
+                            content: post.content,
+                            username: post.userId,
+                          ),
+                        const SizedBox(height: 20),
+                      ]));
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return const CircularProgressIndicator();
+                  },
+                ),
+              ],
             ),
-          ]),
-        )),
+          ),
+        ),
       ),
     );
   }

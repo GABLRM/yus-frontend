@@ -21,3 +21,21 @@ Future<List<Post>> fetchPosts() async {
     throw Exception('Failed to load posts');
   }
 }
+
+Future<void> createPost(String title, String content) async {
+  final token = await storage.read(key: 'token');
+  final response = await http.post(
+    Uri.parse('http://localhost:9001/posts/'),
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token',
+    },
+    body: jsonEncode(<String, String>{
+      'title': title,
+      'content': content,
+    }),
+  );
+  if (response.statusCode != 201) {
+    throw Exception('Failed to create post');
+  }
+}
