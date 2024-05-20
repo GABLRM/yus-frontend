@@ -23,7 +23,7 @@ class User {
         'firstname': String firstname,
         'lastname': String lastname,
         'email': String email,
-        'biography': String biography,
+        'biography': String? biography,
       } =>
         User(
           id: id,
@@ -32,6 +32,20 @@ class User {
           lastname: lastname,
           email: email,
           biography: biography,
+        ),
+      {
+        '_id': String id,
+        'username': String username,
+        'firstname': String firstname,
+        'lastname': String lastname,
+        'email': String email,
+      } =>
+        User(
+          id: id,
+          username: username,
+          firstname: firstname,
+          lastname: lastname,
+          email: email,
         ),
       _ => throw const FormatException('Failed to load User.'),
     };

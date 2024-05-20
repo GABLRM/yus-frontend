@@ -52,15 +52,19 @@ class _HomePageState extends State<HomePage> {
                     if (snapshot.hasData) {
                       final posts = snapshot.data!; // Access the list of posts
                       return SingleChildScrollView(
-                          child: Column(children: [
-                        for (final post in posts)
-                          PostContainer(
-                            title: post.title,
-                            content: post.content,
-                            username: post.userId,
-                          ),
-                        const SizedBox(height: 20),
-                      ]));
+                        child: Column(
+                          children: [
+                            for (final post in posts)
+                              PostContainer(
+                                title: post.title,
+                                content: post.content,
+                                username: post.userId,
+                                createdAt: post.createdAt,
+                              ),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
+                      );
                     } else if (snapshot.hasError) {
                       return Text('${snapshot.error}');
                     }

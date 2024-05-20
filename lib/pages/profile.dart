@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:yus_dev/classes/post.dart';
 import 'package:yus_dev/classes/user.dart';
 import 'package:yus_dev/repositories/post_repository.dart';
@@ -92,29 +93,30 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                       ),
-                      Expanded(
-                        child: FutureBuilder<List<Post>>(
-                          future: futurePost,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              final posts = snapshot.data!;
-                              return ListView.builder(
-                                itemCount: posts.length,
-                                itemBuilder: (context, index) {
-                                  final post = posts[index];
-                                  return PostContainer(
-                                    title: post.title,
-                                    content: post.content,
-                                    username: post.userId,
-                                  );
-                                },
-                              );
-                            } else if (snapshot.hasError) {
-                              return Text('${snapshot.error}');
-                            }
-                            return const CircularProgressIndicator();
-                          },
-                        ),
+                      FutureBuilder<List<Post>>(
+                        future: futurePost,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            final posts = snapshot.data!;
+                            return SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  for (final post in posts)
+                                    PostContainer(
+                                      title: post.title,
+                                      content: post.content,
+                                      username: post.userId,
+                                      createdAt: post.createdAt,
+                                    ),
+                                    const SizedBox(height: 20),
+                                ],
+                              ),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Text('${snapshot.error}');
+                          }
+                          return const CircularProgressIndicator();
+                        },
                       ),
                     ],
                   );
