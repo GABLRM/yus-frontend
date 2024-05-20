@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yus_dev/pages/home.dart';
 import 'package:yus_dev/pages/profile.dart';
+import 'package:yus_dev/pages/settings.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -16,9 +17,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     ProfilePage(),
-    Text(
-      'Paramètres',
-    ),
+    SettingsPage(),
   ];
 
   void _onItemTapped(int index) {

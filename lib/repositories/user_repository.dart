@@ -64,3 +64,28 @@ Future<User> fetchUserConnected() async {
     throw Exception('Failed to load user');
   }
 }
+
+Future<void> updateUser(String username, String firstname, String lastname,
+    String biography, String email, String password) async {
+  final token = await storage.read(key: 'token');
+
+  final Map<String, String> body = {};
+  if (username != '') body['username'] = username;
+  if (firstname != '') body['firstname'] = firstname;
+  if (lastname != '') body['lastname'] = lastname;
+  if (biography != '') body['biography'] = biography;
+  if (email != '') body['email'] = email;
+  if (password != '') body['password'] = password;
+
+  final response = await http.put(
+    Uri.parse('http://localhost:9001/users/me'),
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token',
+    },
+    body: jsonEncode(body),
+  );
+  if (response.statusCode != 200) {
+    throw Exception('Failed to update user');
+  }
+}

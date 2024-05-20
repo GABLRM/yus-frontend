@@ -36,7 +36,7 @@ class PasswordInputState extends State<PasswordInput> {
             hintText: widget.label,
             suffixIcon: IconButton(
               icon: Icon(
-                _passwordVisible ? Icons.visibility_off : Icons.visibility,
+                _passwordVisible ? Icons.visibility : Icons.visibility_off,
               ),
               onPressed: () {
                 setState(() {
