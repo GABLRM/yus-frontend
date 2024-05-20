@@ -3,6 +3,7 @@ import 'package:yus_dev/repositories/user_repository.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/input/app_input_label.dart';
 import 'package:yus_dev/widgets/input/app_input_password.dart';
+import 'package:yus_dev/widgets/snackBar/app_custom_snackbar.dart';
 
 class SettingsForm extends StatefulWidget {
   const SettingsForm({super.key});
@@ -204,13 +205,32 @@ class _SettingsFormState extends State<SettingsForm> {
             CustomButton(
               text: "Sauvegarder",
               press: () {
-                updateUser(
-                    usernameController.text,
-                    firstnameController.text,
-                    lastnameController.text,
-                    bioController.text,
-                    emailController.text,
-                    passwordController.text);
+                if (updateUser(
+                        usernameController.text,
+                        firstnameController.text,
+                        lastnameController.text,
+                        bioController.text,
+                        emailController.text,
+                        passwordController.text) ==
+                    null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: CustomSnackBarContent(errorText: 'Erreur lors de la sauvegarde'),
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: CustomSnackBarContent(errorText: 'Sauvegarde réussie', containerColor: Colors.green, title: 'Super !',),
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                    ),
+                  );
+                }
               },
             ),
           ],

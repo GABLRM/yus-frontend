@@ -65,7 +65,7 @@ Future<User> fetchUserConnected() async {
   }
 }
 
-Future<void> updateUser(String username, String firstname, String lastname,
+Future<String> updateUser(String username, String firstname, String lastname,
     String biography, String email, String password) async {
   final token = await storage.read(key: 'token');
 
@@ -86,6 +86,7 @@ Future<void> updateUser(String username, String firstname, String lastname,
     body: jsonEncode(body),
   );
   if (response.statusCode != 200) {
-    throw Exception('Failed to update user');
+    return 'null';
   }
+  return 'success';
 }

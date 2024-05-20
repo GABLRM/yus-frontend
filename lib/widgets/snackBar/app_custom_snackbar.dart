@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 
 class CustomSnackBarContent extends StatelessWidget {
-  const CustomSnackBarContent({
-    super.key,
-    required this.errorText,
-  });
+  const CustomSnackBarContent(
+      {super.key, required this.errorText, this.containerColor, this.title});
 
   final String errorText;
+  final Color? containerColor;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       height: 90,
-      decoration: const BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      child:  Row(
+      decoration: BoxDecoration(
+          color: containerColor ?? Colors.red,
+          borderRadius: const BorderRadius.all(Radius.circular(20))),
+      child: Row(
         children: [
           const SizedBox(width: 48),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Oups !",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                Text(
+                  title ?? "Oups !",
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 Text(
                   errorText,

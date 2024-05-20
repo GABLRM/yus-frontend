@@ -3,6 +3,7 @@ import 'package:yus_dev/repositories/post_repository.dart';
 import 'package:yus_dev/utils/post_verification.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/input/app_input_label.dart';
+import 'package:yus_dev/widgets/snackBar/app_custom_snackbar.dart';
 
 class PostForm extends StatefulWidget {
   const PostForm({super.key});
@@ -80,8 +81,14 @@ class PostFormState extends State<PostForm> {
       createPost(titleController.text, contentController.text);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Post créé avec succès'),
-          backgroundColor: Colors.green,
+          content: CustomSnackBarContent(
+            errorText: 'Post créé avec succès',
+            containerColor: Colors.green,
+            title: 'Super !',
+          ),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
       );
       Navigator.pushNamed(context, '/home');
