@@ -6,18 +6,18 @@ import 'package:http/http.dart' as http;
 
 const storage = FlutterSecureStorage();
 
-Future<Post> fetchPosts() async {
+Future<List<Post>> fetchPosts() async {
   final token = await storage.read(key: 'token');
-  final response = await http.get(
-      Uri.parse('http://localhost:9001/posts/6649d1c03164eb9e620b09c6'),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer $token'
-      });
+  final response =
+      await http.get(Uri.parse('http://localhost:9001/posts/'), headers: {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'Authorization': 'Bearer $token'
+  });
 
   if (response.statusCode == 200) {
-    return Post.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+    final decodedData = jsonDecode(response.body) as List<dynamic>;
+    return decodedData.map((post) => Post.fromJson(post)).toList();
   } else {
-    throw Exception('Failed to load post');
+    throw Exception('Failed to load posts');
   }
 }
