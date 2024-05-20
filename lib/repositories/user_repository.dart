@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:yus_dev/classes/user.dart';
 
 const storage = FlutterSecureStorage();
 
@@ -46,5 +47,20 @@ Future<String> login(String email, String password) async {
     }
   } catch (e) {
     return 'Erreur lors de la connexion';
+  }
+}
+
+Future<User> fetchUserConnected() async {
+  final token = await storage.read(key: 'token');
+  final response =
+      await http.get(Uri.parse('http://localhost:9001/users/me'), headers: {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'Authorization': 'Bearer  $token',
+  });
+
+  if (response.statusCode == 200) {
+    return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+  } else {
+    throw Exception('Failed to load user');
   }
 }
