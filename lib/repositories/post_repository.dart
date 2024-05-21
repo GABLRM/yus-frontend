@@ -60,3 +60,19 @@ Future<List<Post>> fetchPostUser() async {
     throw Exception('Failed to load posts');
   }
 }
+
+Future<String> fetchUserPerPost(String id) async {
+  final token = await storage.read(key: 'token');
+
+  final response =
+      await http.get(Uri.parse('http://localhost:9001/users/$id'), headers: {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'Authorization': 'Bearer $token'
+  });
+  if (response.statusCode == 200) {
+    final decodedData = jsonDecode(response.body);
+    return decodedData['username'];
+  } else {
+    throw Exception('Failed to load user');
+  }
+}

@@ -2,14 +2,14 @@ class Post {
   final String id;
   final String title;
   final String content;
-  final String userId;
+  final String username;
   final String createdAt;
 
   const Post({
     required this.id,
     required this.title,
     required this.content,
-    required this.userId,
+    required this.username,
     required this.createdAt,
   });
 
@@ -19,14 +19,14 @@ class Post {
         '_id': String id,
         'title': String title,
         'content': String content,
-        'user_id': String userId,
+        'username': String username,
         'created_at': String createdAt,
       } =>
         Post(
           id: id,
           title: title,
           content: content,
-          userId: userId,
+          username: username,
           createdAt: createdAt,
         ),
       _ => throw const FormatException('Failed to load Post.'),

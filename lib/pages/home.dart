@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                               PostContainer(
                                 title: post.title,
                                 content: post.content,
-                                username: post.userId,
+                                username: post.username,
                                 createdAt: formatDate(post.createdAt),
                               ),
                             const SizedBox(height: 20),

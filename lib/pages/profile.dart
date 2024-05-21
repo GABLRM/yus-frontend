@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:yus_dev/classes/post.dart';
 import 'package:yus_dev/classes/user.dart';
 import 'package:yus_dev/repositories/post_repository.dart';
@@ -41,13 +40,14 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Center(
-            child: FutureBuilder<User>(
-              future: futureUser,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final user = snapshot.data!;
-                  return Column(
+          child: FutureBuilder<User>(
+            future: futureUser,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final user = snapshot.data!;
+                return SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         user.username,
@@ -56,8 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Text(
                         '${user.lastname} ${user.firstname}',
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.grey),
+                        style: const TextStyle(fontSize: 20, color: Colors.grey),
                       ),
                       const SizedBox(height: 20),
                       Container(
@@ -99,19 +98,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             final posts = snapshot.data!;
-                            return SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  for (final post in posts)
-                                    PostContainer(
-                                      title: post.title,
-                                      content: post.content,
-                                      username: post.userId,
-                                      createdAt: formatDate(post.createdAt),
-                                    ),
-                                    const SizedBox(height: 20),
-                                ],
-                              ),
+                            return Column(
+                              children: [
+                                for (final post in posts)
+                                  PostContainer(
+                                    title: post.title,
+                                    content: post.content,
+                                    username: post.username,
+                                    createdAt: formatDate(post.createdAt),
+                                  ),
+                                const SizedBox(height: 20),
+                              ],
                             );
                           } else if (snapshot.hasError) {
                             return Text('${snapshot.error}');
@@ -120,13 +117,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                     ],
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-                return const CircularProgressIndicator();
-              },
-            ),
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              return const CircularProgressIndicator();
+            },
           ),
         ),
       ),
