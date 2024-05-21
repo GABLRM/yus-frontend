@@ -212,10 +212,11 @@ class _SettingsFormState extends State<SettingsForm> {
                         bioController.text,
                         emailController.text,
                         passwordController.text) ==
-                    null) {
+                    "null") {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: CustomSnackBarContent(errorText: 'Erreur lors de la sauvegarde'),
+                      content: CustomSnackBarContent(
+                          errorText: 'Erreur lors de la sauvegarde'),
                       behavior: SnackBarBehavior.floating,
                       backgroundColor: Colors.transparent,
                       elevation: 0,
@@ -224,7 +225,11 @@ class _SettingsFormState extends State<SettingsForm> {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: CustomSnackBarContent(errorText: 'Sauvegarde réussie', containerColor: Colors.green, title: 'Super !',),
+                      content: CustomSnackBarContent(
+                        errorText: 'Sauvegarde réussie',
+                        containerColor: Colors.green,
+                        title: 'Super !',
+                      ),
                       behavior: SnackBarBehavior.floating,
                       backgroundColor: Colors.transparent,
                       elevation: 0,
