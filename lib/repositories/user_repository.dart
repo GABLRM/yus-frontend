@@ -66,7 +66,7 @@ Future<User> fetchUserConnected() async {
 }
 
 Future<String> updateUser(String username, String firstname, String lastname,
-    String biography, String email, String password) async {
+    String biography, String email) async {
   final token = await storage.read(key: 'token');
 
   final Map<String, String> body = {};
@@ -75,7 +75,6 @@ Future<String> updateUser(String username, String firstname, String lastname,
   if (lastname != '') body['lastname'] = lastname;
   if (biography != '') body['biography'] = biography;
   if (email != '') body['email'] = email;
-  if (password != '') body['password'] = password;
 
   final response = await http.put(
     Uri.parse('http://localhost:9001/users/me'),

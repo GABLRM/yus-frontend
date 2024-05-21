@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yus_dev/repositories/user_repository.dart';
 import 'package:yus_dev/widgets/button/app_button.dart';
 import 'package:yus_dev/widgets/input/app_input_label.dart';
-import 'package:yus_dev/widgets/input/app_input_password.dart';
 import 'package:yus_dev/widgets/snackBar/app_custom_snackbar.dart';
 
 class SettingsForm extends StatefulWidget {
@@ -18,8 +17,6 @@ class _SettingsFormState extends State<SettingsForm> {
   late TextEditingController lastnameController = TextEditingController();
   late TextEditingController bioController = TextEditingController();
   late TextEditingController emailController = TextEditingController();
-  late TextEditingController passwordController = TextEditingController();
-  late TextEditingController confirmController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -31,8 +28,6 @@ class _SettingsFormState extends State<SettingsForm> {
     lastnameController = TextEditingController();
     bioController = TextEditingController();
     emailController = TextEditingController();
-    passwordController = TextEditingController();
-    confirmController = TextEditingController();
   }
 
   @override
@@ -43,8 +38,6 @@ class _SettingsFormState extends State<SettingsForm> {
     lastnameController.dispose();
     bioController.dispose();
     emailController.dispose();
-    passwordController.dispose();
-    confirmController.dispose();
   }
 
   @override
@@ -166,42 +159,6 @@ class _SettingsFormState extends State<SettingsForm> {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              width: screenWidth,
-              padding: const EdgeInsetsDirectional.symmetric(
-                  vertical: 20, horizontal: 15),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.yellow[400]!, width: 3),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                children: [
-                  const Text(
-                    "Sécurité",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.grey),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  PasswordInput(
-                      label: 'Nouveau Mot de passe',
-                      controller: passwordController),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  PasswordInput(
-                    label: 'Confirmez votre nouveau mot de passe',
-                    controller: confirmController,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
             CustomButton(
               text: "Sauvegarder",
               press: () {
@@ -210,8 +167,7 @@ class _SettingsFormState extends State<SettingsForm> {
                         firstnameController.text,
                         lastnameController.text,
                         bioController.text,
-                        emailController.text,
-                        passwordController.text) ==
+                        emailController.text) ==
                     "null") {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
