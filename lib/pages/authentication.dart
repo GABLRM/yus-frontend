@@ -15,7 +15,7 @@ class AuthenticationPage extends StatelessWidget {
           children: [
             const Padding(
                 padding: EdgeInsets.only(top: 5.0), child: MainTitle()),
-              Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 children: [

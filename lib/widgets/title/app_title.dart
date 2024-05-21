@@ -10,8 +10,7 @@ class MainTitle extends StatelessWidget {
     return const Text(
       "Yu's",
       style: TextStyle(
-        color: Colors.black, fontSize: 80, fontWeight: FontWeight.w800
-      ),
+          color: Colors.black, fontSize: 80, fontWeight: FontWeight.w800),
     );
   }
 }

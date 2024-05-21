@@ -15,12 +15,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         routes: {
           '/login': (context) => const LoginPage(),
           '/home': (context) => const CustomBottomNavigationBar(),
           '/register': (context) => const RegisterPage(),
-          '/add' : (context) => const AddPage(),
+          '/add': (context) => const AddPage(),
           '/authentication': (context) => const AuthenticationPage(),
         },
         title: "Yu's",

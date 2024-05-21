@@ -87,14 +87,15 @@ class _LoginFormState extends State<LoginForm> {
       );
     } else {
       final token = await login(emailController.text, passwordController.text);
-      if (token.startsWith(RegExp('ey') )) {
+      if (token.startsWith(RegExp('ey'))) {
         // ignore: use_build_context_synchronously
         Navigator.pushNamed(context, '/home');
       } else {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: CustomSnackBarContent(errorText: 'Email ou mot de passe incorrect'),
+            content: CustomSnackBarContent(
+                errorText: 'Email ou mot de passe incorrect'),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.transparent,
             elevation: 0,

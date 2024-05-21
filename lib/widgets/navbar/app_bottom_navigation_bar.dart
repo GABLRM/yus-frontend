@@ -47,7 +47,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         unselectedItemColor: Colors.grey[500],
         backgroundColor: Colors.yellow[200],
         onTap: _onItemTapped,
-        
       ),
     );
   }
