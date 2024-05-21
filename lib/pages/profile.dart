@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:yus_dev/classes/post.dart';
 import 'package:yus_dev/classes/user.dart';
 import 'package:yus_dev/repositories/post_repository.dart';
 import 'package:yus_dev/repositories/user_repository.dart';
 import 'package:yus_dev/utils/format_date.dart';
 import 'package:yus_dev/widgets/post/app_post.dart';
+
+const storage = FlutterSecureStorage();
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -36,6 +39,16 @@ class _ProfilePageState extends State<ProfilePage> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: Colors.yellow[200],
+        actions: <Widget>[
+          IconButton(
+            onPressed: () async {
+              await storage.delete(key: 'token');
+              Navigator.pushNamed(context, "/authentication");
+            },
+            icon: const Icon(Icons.logout),
+            iconSize: 30,
+          )
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -56,7 +69,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Text(
                         '${user.lastname} ${user.firstname}',
-                        style: const TextStyle(fontSize: 20, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.grey),
                       ),
                       const SizedBox(height: 20),
                       Container(

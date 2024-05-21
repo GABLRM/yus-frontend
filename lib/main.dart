@@ -21,6 +21,7 @@ class MainApp extends StatelessWidget {
           '/home': (context) => const CustomBottomNavigationBar(),
           '/register': (context) => const RegisterPage(),
           '/add' : (context) => const AddPage(),
+          '/authentication': (context) => const AuthenticationPage(),
         },
         title: "Yu's",
         theme: ThemeData(scaffoldBackgroundColor: Colors.yellow[50]),
