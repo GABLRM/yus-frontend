@@ -25,7 +25,7 @@ class AddPage extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ),
     );
   }

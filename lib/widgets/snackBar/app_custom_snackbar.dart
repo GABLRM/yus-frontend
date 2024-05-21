@@ -35,7 +35,7 @@ class CustomSnackBarContent extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

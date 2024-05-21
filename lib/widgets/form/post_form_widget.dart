@@ -58,7 +58,7 @@ class PostFormState extends State<PostForm> {
                 press: () {
                   addPost(context);
                 },
-              )
+              ),
             ],
           ),
         ),

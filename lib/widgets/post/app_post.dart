@@ -69,7 +69,7 @@ class PostContainer extends StatelessWidget {
                     fontSize: 10,
                     color: Colors.grey,
                   ),
-                )
+                ),
               ],
             ),
           ),
